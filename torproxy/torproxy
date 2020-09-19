@@ -1,0 +1,15 @@
+#!/bin/sh
+printf "nameservers 127.0.0.1\n" > /etc/resolv.conf
+printf "starting tor...\n"
+cat > /etc/tor/torrc <<- EOF
+	SocksPort 0.0.0.0:9050
+	SocksPort 0.0.0.0:9051
+	SocksPort 0.0.0.0:9052
+	SocksPort 0.0.0.0:9053
+	SocksPort 0.0.0.0:9054
+	#DNSPort 0.0.0.0:53
+	Log notice stderr
+	Log info file /var/log/tor/log
+EOF
+chmod 0700 /etc/tor/torrc
+tor -f /etc/tor/torrc

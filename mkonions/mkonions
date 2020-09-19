@@ -1,0 +1,11 @@
+#!/bin/sh
+case $1 in 
+	v2) shift
+	    v2 $* | tee -a /tmp/results/v2.txt
+	    ;;
+	v3) v3 -d /tmp/results/v3 "$2"
+	    ;;
+	*)  printf 'Please execute "v3 <string>" or "v2 <args> <string>"\r\n'
+	    exit 1
+	    ;;
+esac
