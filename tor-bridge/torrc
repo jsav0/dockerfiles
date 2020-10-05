@@ -1,0 +1,28 @@
+# CHANGE NICKNAME AND CONTACT INFO
+Nickname n0bridge4u
+ContactInfo unrelated@example.com
+
+# DO NOT CHANGE 
+RunAsDaemon 0
+DataDirectory /var/lib/tor
+Log notice file /var/log/torlog
+Log notice stdout
+
+# for control / monitoring
+# CookieAuthentication 1
+ControlPort 0.0.0.0:9051
+HashedControlPassword 16:ED61E1D6EDC589FF6084F41B4671BDCF2FDBEB766B571BE449A822BBD0 
+
+# configure as relay[bridge], disable exits, private only
+ORPort 9001		  # advertise tor bridge on port
+SocksPort 0		  # disable local socks proxy
+BridgeRelay 1		  # this is a bridge, do NOT report to the public concensus
+PublishServerDescriptor 0 # do NOT publish to the bridge authority
+ExitPolicy reject *:*	  # no exits allowed
+
+# use obfs4proxy to provide obfs4 pluggable transport on port 443
+ExtORPort auto
+ServerTransportPlugin obfs4 exec /usr/sbin/obfs4proxy
+ServerTransportListenAddr obfs4 0.0.0.0:443
+
+
