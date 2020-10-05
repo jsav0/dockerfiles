@@ -18,9 +18,9 @@ docker run -v $(pwd)/onions:/tmp/onions \
 ```
 `-v $(pwd)/results:/tmp/results` is used to map the results to your current working directory on the host.   
 
-The container commands `v2` and `v3` above execute eschalot and mkp224o respectively. They will print their own usage() with `-h`.   
+The container commands `v2` and `v3` above execute `eschalot` and `mkp224o` respectively. They will print their own usage() with `-h`.   
 
-The string `test` is the seed required for the address generators. Up to 8chars is reasonably fast. Dictionaries supported for v2.  
+The string `test` is the seed required for the address generators. Up to 8chars is reasonably fast. 
 
 
 
