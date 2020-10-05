@@ -1,5 +1,5 @@
 # Basic usage:
-# docker run --rm -it wfnintr/kockpy domain.com
+# docker run --rm -it wfnintr/knockpy domain.com
 FROM python:2.7-alpine
 LABEL maintainer="wfnintr@null.net"
 RUN apk add --no-cache --virtual .depends git && \
