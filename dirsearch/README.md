@@ -1,6 +1,6 @@
 # dirsearch in a docker container
-dirsearch source: <https://github.com/maurosoria/dirsearch>  
 Lightweight, based on python:3-alpine  
+dirsearch source: <https://github.com/maurosoria/dirsearch>  
 
 ## Basic Usage
 ```
