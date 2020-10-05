@@ -1,3 +1,5 @@
+# Basic usage:
+# docker run -it --rm wfnintr/dirsearch -u target -e php,html,png,js,jpg
 FROM python:3-alpine
 LABEL maintainer="wfnintr@null.net"
 WORKDIR /root
