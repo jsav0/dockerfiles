@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER wfnintr <unrelated@example.com>
+MAINTAINER wfnintr <wfnintr@null.net>
 
 # install packages
 RUN apk add --no-cache --virtual .build-deps \
