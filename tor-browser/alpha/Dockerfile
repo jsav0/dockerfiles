@@ -1,9 +1,10 @@
 # Usage:
-# docker run --log-driver none --rm \
+# X11: docker run --log-driver none --rm \
 #         -v /dev/shm:/dev/shm \
 #         -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 #         -e DISPLAY=$DISPLAY \
 #         torbrowser
+# Wayland: x11docker wfnintr/torbrowser
 FROM debian:bullseye-slim
 
 RUN apt-get update && apt-get install -y curl gnupg file xz-utils \
