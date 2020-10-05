@@ -3,7 +3,7 @@
 # Usage
 1. run the container
 ```
-docker run -d -p 127.0.0.1:9050:9050 --name torproxy torproxy
+docker run -d -p 127.0.0.1:9050:9050 --name torproxy wfnintr/torproxy
 ```
 
 2. use `torsocks` on your local machine to check tor is working
@@ -20,5 +20,5 @@ docker run -d \
 	-p 127.0.0.1:9052:9052 \
 	-p 127.0.0.1:9053:9053 \
 	-p 127.0.0.1:9054:9054 \
-	--name torproxy torproxy
+	--name torproxy wfnintr/torproxy
 ```
