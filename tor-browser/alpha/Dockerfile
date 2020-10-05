@@ -10,7 +10,7 @@ FROM debian:bullseye-slim
 RUN apt-get update && apt-get install -y curl gnupg file xz-utils \
 	libgtk-3.0 libdbus-glib-1-2 libx11-xcb-dev libxt6
 
-ENV TOR_VERSION="10.0a7" \
+ENV TOR_VERSION="10.5a1" \
 	LANG="en-US" \
 	FINGERPRINT="EF6E286DDA85EA2A4BA7DE684E2C6E8793298290"
 
