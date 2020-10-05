@@ -1,4 +1,6 @@
 # Usage:
+
+## X11
 ```
 docker run --log-driver none --rm \
 	-v /dev/shm:/dev/shm \
@@ -6,3 +8,10 @@ docker run --log-driver none --rm \
 	-e DISPLAY=$DISPLAY \
 	torbrowser
 ```
+
+## Wayland
+x11docker appears to work well for running X11 apps under wayland.   
+```
+x11docker wfnintr/torbrowser
+```
+
