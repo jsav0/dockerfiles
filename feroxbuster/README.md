@@ -1,7 +1,7 @@
 # feroxbuster
 A fast, simple, recursive content discovery tool written in Rust.  
-source: <https://github.com/epi052/feroxbuster>  
-See the [official REAMDE](https://github.com/epi052/feroxbuster/blob/master/README.md) for more information and examples.  
+Source: [github.com/epi052/feroxbuster](https://github.com/epi052/feroxbuster)  
+README: [official REAMDE](https://github.com/epi052/feroxbuster/blob/master/README.md) for more information and examples.  
 
 #### Basic usage
 
