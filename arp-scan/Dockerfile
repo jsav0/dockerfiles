@@ -1,6 +1,7 @@
 # Basic Usage:
 # docker run --net=host -it wfnintr/arp-scan -l
 FROM alpine:latest
+LABEL source="<https://github.com/royhills/arp-scan>"
 LABEL maintainer="wfnintr@null.net"
 RUN apk add --no-cache --virtual .depends \
 	git automake autoconf make gcc g++ libpcap-dev && \
