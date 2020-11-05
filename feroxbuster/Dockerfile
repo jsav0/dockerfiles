@@ -1,6 +1,7 @@
 # Basic usage:
 # docker run --init -it feroxbuster -u http://example.com -x js,html
 FROM alpine:latest
+LABEL source="<github.com/epi052/feroxbuster>"
 LABEL maintainer="wfnintr@null.net"
 
 # download default wordlists 
