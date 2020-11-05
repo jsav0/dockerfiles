@@ -4,7 +4,7 @@ MAINTAINER wfnintr <wfnintr@null.net>
 # install packages
 RUN apk add --no-cache --virtual .build-deps \
 	git build-base autoconf \
-	&& apk add libressl-dev libsodium-dev \
+	&& apk add shadow libressl-dev libsodium-dev \
 	&& cd /opt \
 	&& git clone https://github.com/ReclaimYourPrivacy/eschalot.git \
 	&& cd /opt/eschalot \
@@ -20,6 +20,10 @@ RUN apk add --no-cache --virtual .build-deps \
  
 COPY mkonions /usr/local/bin/
 RUN chmod +x /usr/local/bin/mkonions
-ENTRYPOINT ["mkonions"]
+RUN useradd --create-home --shell /bin/sh anon
+USER anon
+WORKDIR /home/anon/results
+ENTRYPOINT ["/bin/sh"]
+#ENTRYPOINT ["mkonions"]
 
 
