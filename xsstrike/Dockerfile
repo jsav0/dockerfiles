@@ -11,4 +11,5 @@ RUN apk add --no-cache --virtual .depends git && \
 	apk del .depends
 
 WORKDIR /opt/xsstrike
-ENTRYPOINT [ "./xsstrike.py" ]
+#ENTRYPOINT [ "./xsstrike.py" ]
+ENTRYPOINT [ "/bin/sh" ]

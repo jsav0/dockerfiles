@@ -24,10 +24,15 @@ RUN go get -u github.com/hakluke/hakrawler
 # gf
 RUN go get -u github.com/tomnomnom/gf && \
   cp -r $GOPATH/src/github.com/tomnomnom/gf/examples /tmp/gf && \
-  git clone https://github.com/1ndianl33t/Gf-Patterns && mv Gf-Patterns/*.json /tmp/gf
+  git clone https://github.com/1ndianl33t/Gf-Patterns && mv Gf-Patterns/*.json /tmp/gf && \
+  git clone https://github.com/dwisiswant0/gf-secrets && mv gf-secrets/.gf/* /tmp/gf
 
 # qsreplace
 RUN go get -u github.com/tomnomnom/qsreplace
+
+# fff
+RUN go get -u github.com/tomnomnom/fff
+
 
 # dalfox
 RUN go get -u github.com/hahwul/dalfox
@@ -46,11 +51,9 @@ RUN git clone https://github.com/blechschmidt/massdns massdns && \
 RUN GO111MODULE=on go get -u github.com/projectdiscovery/shuffledns/cmd/shuffledns
 
 
-
-
 # final image
 FROM alpine:latest
-RUN apk add --no-cache jq curl 
+RUN apk add --no-cache jq curl bash grep
 COPY --from=builder /go/bin/* /usr/local/bin/
 COPY --from=builder /usr/local/bin/* /usr/local/bin/
 RUN mkdir /recon && mkdir ~/.gf
