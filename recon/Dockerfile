@@ -7,10 +7,10 @@ LABEL maintainer="wfnintr@null.net <github.com/jsav0>"
 RUN GO111MODULE=on go get -u github.com/projectdiscovery/subfinder/v2/cmd/subfinder
 
 # httpx
-RUN GO111MODULE=auto go get -u github.com/projectdiscovery/httpx/cmd/httpx
+RUN GO111MODULE=on go get -u github.com/projectdiscovery/httpx/cmd/httpx
 
-# dnsprobe
-RUN GO111MODULE=on go get -u github.com/projectdiscovery/dnsprobe
+# dnsx
+RUN GO111MODULE=on go get -u  github.com/projectdiscovery/dnsx/cmd/dnsx
 
 # gau
 RUN GO111MODULE=on go get -u github.com/lc/gau
