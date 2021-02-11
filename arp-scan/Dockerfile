@@ -1,4 +1,4 @@
-# Basic Usage:
+# Usage:
 # docker run --net=host -it wfnintr/arp-scan -l
 FROM alpine:latest
 LABEL source="<https://github.com/royhills/arp-scan>"
