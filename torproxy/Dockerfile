@@ -1,11 +1,16 @@
-from alpine:latest
-label maintainer="wfnintr@null.net"
+# Usage:
+# docker run -d -p 127.0.0.1:9050:9050 --name torproxy wfnintr/torproxy
+FROM alpine:latest
+LABEL maintainer="wfnintr@null.net"
 
-run apk add --no-cache libcap tor
-run chown tor /etc/tor
-run setcap cap_net_bind_service=+ep /usr/bin/tor
-expose 9050
-copy torproxy /usr/local/bin/
-run chmod +x /usr/local/bin/torproxy
-user tor
-cmd ["torproxy"]
+RUN apk add --no-cache libcap tor
+RUN chown tor /etc/tor
+RUN setcap cap_net_bind_service=+ep /usr/bin/tor
+
+EXPOSE 9050
+
+COPY torproxy /usr/local/bin/
+RUN chmod +x /usr/local/bin/torproxy
+
+USER tor
+CMD ["torproxy"]
