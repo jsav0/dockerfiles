@@ -1,5 +1,5 @@
 # Usage:
-# xhost +"local:docker@"
+# X11: xhost +"local:docker@"
 # docker run --log-driver none --rm \
 #         -v /dev/shm:/dev/shm \
 #         -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
@@ -8,6 +8,7 @@
 #
 # Wayland: x11docker wfnintr/torbrowser
 FROM debian:bullseye-slim
+LABEL maintainer="wfnintr@null.net"
 
 RUN apt-get update && apt-get install -y curl gnupg file xz-utils \
 	libgtk-3.0 libdbus-glib-1-2 libx11-xcb-dev libxt6
