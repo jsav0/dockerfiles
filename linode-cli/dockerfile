@@ -1,5 +1,7 @@
+# usage: 
+# docker run -it -e LINODE_CLI_TOKEN="$LINODE_CLI_TOKEN" linode-cli
 FROM python:alpine
-
+LABEL source="linde-cli <github.com/linode/linode-cli>"
+LABEL maintainer="jsavage <wfnintr@null.net>"
 RUN pip install linode-cli
-
 ENTRYPOINT ["linode-cli"]
