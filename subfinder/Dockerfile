@@ -1,4 +1,4 @@
-# docker run -v $HOME/.config/subfinder:/root/.config/subfinder -it projectdiscovery/subfinder -d <target.com>
+# docker run -v $HOME/.config/subfinder:/root/.config/subfinder -it wfnintr/subfinder -d <target.com>
 FROM golang:1.14-alpine AS build-env
 LABEL source="subfinder <github.com/projectdiscovery/subfinder>"
 LABEL maintainer="jsavage <wfnintr@null.net>"
