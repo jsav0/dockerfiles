@@ -1,5 +1,5 @@
 # usage:
-# docker run -v $(pwd):/dnsvalidator/output -t dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o /dnsvalidator/output/resolvers.txt
+# docker run -v $(pwd):/dnsvalidator/output -t wfnintr/dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o /dnsvalidator/output/resolvers.txt
 FROM python:alpine
 LABEL source="dnsvalidator <github.com/vortexau/dnsvalidator>"
 LABEL maintainer="jsavage <wfnintr@null.net>"
