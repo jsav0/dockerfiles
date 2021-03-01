@@ -1,0 +1,31 @@
+#!/bin/sh
+
+enumerate(){
+        # start enumerating subdomains, passively
+        # yes, a lot of these tools have overlapping sources.
+
+        target=$1
+        resolvers=dnsresolvers.txt
+        mkdir -p results # when executed over ssh, my modified copy of drist copies this directory back to the local client when the script finishes
+
+        # subfinder: scrape domains from sources using custom dns resolvers w/ 100 threads
+        subfinder -silent -rL $resolvers -t 100 -d $target > results/subfinder.txt
+
+        # findomain: scrape domains from sources using custom dns resolvers with 100 threads
+        findomain --resolvers $resolvers --threads 100 -qt $target > results/findomain.txt
+
+        # crt.sh: scrape domains from certificate search database
+        curl -s "https://crt.sh/?q=$target&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' > results/crt.txt
+
+        # assetfinder: scrape domains from sources
+        assetfinder --subs-only $target > results/assetfinder.txt
+
+        # amass: scrape domains from sources
+        amass enum -passive -norecursive -noalts -d $target -o results/amass.txt >/dev/null
+}
+
+
+enumerate $1 && {
+	# concatenate all results, and then return only unique and valid subdomains
+	cat results/* | sort -u | shuffledns -silent -r $resolvers -t 100 -d $1 | sort -u > results/subs.result && rm -f results/*.txt && cat results/subs.result
+}
