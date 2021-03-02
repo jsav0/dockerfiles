@@ -1,4 +1,4 @@
-Automated passive subdoman enumeration
+Automated passive subdomain enumeration
 
 Run it like so:
 ```
