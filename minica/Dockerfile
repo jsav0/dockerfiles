@@ -1,13 +1,18 @@
 # Usage: 
-# docker run -v $(pwd)/test/:/tmp/minica -it wfnintr/minica --domains foo.com
+# docker run -v $(pwd):/CA -it wfnintr/minica --domains foo.com
 FROM golang:alpine as builder
+RUN printf "CA:x:1000:1000:Certificate Authority,,,:/CA:/bin/sh\n" > /tmp/passwd
+RUN apk add --no-cache git && \
+	git clone https://github.com/jsha/minica.git /go/src/minica && \
+	cd /go/src/minica && \
+	CGO_ENABLED=0 go build -o /go/bin/minica
+
+
+FROM scratch
 LABEL source="minica <github.com/jsha/minica>"
 LABEL maintainer="jsavage <wfnintr@null.net>"
-RUN go get github.com/jsha/minica
-
-FROM alpine
-COPY --from=builder /go/bin/minica /usr/local/bin/
-RUN adduser -D CA
+COPY --from=builder /go/bin/minica /bin/minica
+COPY --from=builder /tmp/passwd /etc/passwd
 USER CA
-WORKDIR /tmp/minica
-ENTRYPOINT ["minica"]
+WORKDIR /CA
+ENTRYPOINT ["/bin/minica"]
