@@ -36,7 +36,6 @@ COPY --from=builder /usr/local/bin/* /usr/local/bin/
 RUN mkdir /opt/subs 
 WORKDIR /opt/subs
 
-ADD https://gist.githubusercontent.com/jsav0/8760362bb6a6542d60deedd905d67e93/raw/ea8a89446da942800c728ff8491d029ea6de4448/dnsresolvers.txt dnsresolvers.txt
 COPY subs .
 
 ENTRYPOINT ["/opt/subs/subs"]

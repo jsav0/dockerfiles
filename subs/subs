@@ -1,17 +1,17 @@
 #!/bin/sh
 
 enumerate(){
+	target=$1
+        resolvers=dnsresolvers.txt
+	[ ! -f dnsresolvers.txt ] && curl -sSL https://gist.githubusercontent.com/jsav0/8760362bb6a6542d60deedd905d67e93/raw/ea8a89446da942800c728ff8491d029ea6de4448/dnsresolvers.txt -o dnsresolvers.txt
+        mkdir -p results 
+
         # start enumerating subdomains, passively
         # yes, a lot of these tools have overlapping sources.
-
-        target=$1
-        resolvers=dnsresolvers.txt
-        mkdir -p results # when executed over ssh, my modified copy of drist copies this directory back to the local client when the script finishes
-
         # subfinder: scrape domains from sources using custom dns resolvers w/ 100 threads
         subfinder -silent -rL $resolvers -t 100 -d $target > results/subfinder.txt
 
-        # findomain: scrape domains from sources using custom dns resolvers with 100 threads
+        # findomain: scrape domains from sources using custom dns resolvers w/ 100 threads
         findomain --resolvers $resolvers --threads 100 -qt $target > results/findomain.txt
 
         # crt.sh: scrape domains from certificate search database
