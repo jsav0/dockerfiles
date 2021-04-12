@@ -5,12 +5,10 @@ docker build . -t gophernicus
 
 ### Run: Basic usage
 ```
-docker run --hostname example.com \
-   -p 70:70 \
-   -v $HOME/gopher/public:/var/gopher/ \
-   -v $HOME/gopher/gophernicus.xinetd.conf:/etc/xinetd.d/gophernicus gophernicus
+docker run --hostname example.com -p 70:70 -v $HOME/gopher/public:/var/gopher/ gophernicus
 ```
+* `-p` 70 forwards traffic to the docker container
+* `-v $HOME/gopher/public:/var/gopher/`: supply your own data directory. container can be ephemeral. 
 
-* `-v $HOME/gopher/public:/var/gopher/`: supply your data directory
-* `-v $HOME/gopher/gophernicus.xinetd.conf:/etc/xinetd.d/gophernicus`: supply
-  your own xinetd.conf to override the default
+Optionally, supply your own xinetd.conf to override the default
+* `-v gophernicus.xinetd.conf:/etc/xinetd.d/gophernicus`

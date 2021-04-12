@@ -29,6 +29,6 @@ RUN mkdir /etc/xinetd.d /var/gopher && \
    echo "includedir /etc/xinetd.d" > /etc/xinetd.conf
 COPY --from=xinetd-builder /usr/local/sbin/xinetd /usr/local/bin/
 COPY --from=gophernicus-builder /usr/local/sbin/gophernicus /usr/local/sbin/
-COPY --from=gophernicus-builder /etc/xinetd.d/gophernicus /etc/xinetd.d/gophernicus
+ADD example_configs/gophernicus.xinetd.conf.sample /etc/xinetd.d/gophernicus
 ENTRYPOINT ["xinetd"]
 CMD ["-dontfork"]
