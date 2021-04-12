@@ -1,5 +1,3 @@
-# Usage:
-# docker run -p -d 70:70 -v public_gopher:/var/gopher wfnintr/gophernicus
 FROM alpine as xinetd-builder
 RUN apk add --update build-base git linux-headers bsd-compat-headers
 RUN wget https://downloads.sourceforge.net/project/libtirpc/libtirpc/1.2.6/libtirpc-1.2.6.tar.bz2 && \
