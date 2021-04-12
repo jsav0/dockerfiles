@@ -27,7 +27,7 @@ FROM alpine
 LABEL maintainer="wfnintr <wfnintr@null.net>"
 RUN mkdir /etc/xinetd.d /var/gopher && \
    echo "includedir /etc/xinetd.d" > /etc/xinetd.conf
-COPY --from=xinetd-builder /usr/local/sbin/xinetd /usr/local/bin/
+COPY --from=xinetd-builder /usr/local/sbin/xinetd /usr/local/sbin/
 COPY --from=gophernicus-builder /usr/local/sbin/gophernicus /usr/local/sbin/
 ADD example_configs/gophernicus.xinetd.conf.sample /etc/xinetd.d/gophernicus
 ENTRYPOINT ["xinetd"]
