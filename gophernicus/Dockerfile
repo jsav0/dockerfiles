@@ -28,7 +28,8 @@ RUN apk add --update --no-cache git build-base && \
 FROM alpine
 LABEL maintainer="wfnintr <wfnintr@null.net>"
 RUN mkdir /etc/xinetd.d /var/gopher && \
-   echo "includedir /etc/xinetd.d" > /etc/xinetd.conf
+   echo "includedir /etc/xinetd.d" > /etc/xinetd.conf && \
+   echo "wfnintr.net" > /etc/hostname
 COPY --from=xinetd-builder /usr/local/sbin/xinetd /usr/local/bin/
 COPY --from=gophernicus-builder /usr/local/sbin/gophernicus /usr/local/sbin/
 COPY --from=gophernicus-builder /etc/xinetd.d/gophernicus /etc/xinetd.d/gophernicus
