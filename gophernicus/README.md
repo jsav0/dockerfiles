@@ -1,4 +1,6 @@
-## Build 
+## Gophernicus - 6MB Alpine Image
+
+### Build 
 ```
 docker build . -t gophernicus
 ```
